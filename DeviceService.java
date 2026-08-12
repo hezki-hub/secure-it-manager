@@ -19,5 +19,32 @@ public class DeviceService {
         devices.add(newDevice);   
 
     }
-    
+
+    public Device findDeviceById(int deviceId){
+        for(Device d : devices){
+            if(d.getId() == deviceId){
+                return d;
+            }
+        }
+        return null;
+    }
+
+    public boolean updateDeviceStatus(int deviceId, DeviceStatus newStatus){
+        Device targetDevice = findDeviceById(deviceId);
+    if (targetDevice == null) {
+        return false;
+    }
+    targetDevice.setStatus(newStatus);
+    return true;
+    }
+    public ArrayList<Device> getDevicesByCustomerId(int customerId){
+        ArrayList<Device> customerDevice = new ArrayList<>();
+        for(Device d : devices){
+            if(d.getCustomerId() == customerId){
+                customerDevice.add(d);
+            }
+        }
+        return customerDevice;
+    }
+  
 }
