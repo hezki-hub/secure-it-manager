@@ -19,7 +19,7 @@ public class CustomerService {
         System.out.println("Customer Added!!");
     }
 
-    public ArrayList<Customer> getAllCustomer(){
+    public ArrayList<Customer> getAllCustomers(){
         return this.customers;
         //we will loop through the array in the main class so that it will be easy 
     }

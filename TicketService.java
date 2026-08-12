@@ -27,7 +27,7 @@ public class TicketService {
         
     }
 
-    public ArrayList<Ticket> getTicketByCustomerId(int customerId){
+    public ArrayList<Ticket> getTicketsByCustomerId(int customerId){
         ArrayList<Ticket> customerTickets = new ArrayList<>();
         for(Ticket t : tickets){
             if(t.getCustomerId() == customerId){
