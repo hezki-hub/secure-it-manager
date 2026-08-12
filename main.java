@@ -1,11 +1,15 @@
 import java.util.Scanner;
 
-public class main {
+public class Main {
+    
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         boolean is_true = true;
         // initiation 
         AuthenticationService authService = new AuthenticationService();
+        CustomerService customerService = new CustomerService();
+        DeviceService deviceService = new DeviceService();
+        TicketService ticketService = new TicketService();
         do{
         System.out.println("========================================");
         System.out.println("\tSECUREIT MANAGEMENT SYSTEM\t");
@@ -24,14 +28,17 @@ public class main {
                 String password = input.nextLine();
                 System.out.println("Choose your role: ");
                 System.out.println("1)Admin\n2)Technician\n3)Customer");
-                String role = input.next();
+                String role = input.nextLine();
                 User newUser = null;
                 if (role.equalsIgnoreCase("Admin")){
-                   newUser=  new admin(id, username, password);
+                   newUser=  new Admin(id, username, password);
+
+
+                   
                 }else if(role.equalsIgnoreCase("Technician")){
                      newUser = new Technician(id, username, password);
                 }else if (role.equalsIgnoreCase("Customer")){
-                    newUser =  new customer(id, username, password);
+                    newUser =  new Customer(id, username, password);
                 }else{
                     System.out.println("invalid role");
                 }
@@ -57,6 +64,9 @@ public class main {
                 }else{
                     System.out.println("Invalid username or password. Please try again");
                 }
+
+
+
                 break;
 
             case 3:

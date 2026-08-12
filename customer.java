@@ -1,10 +1,10 @@
-public class customer extends User {
+public class Customer extends User {
      
     private String phone;
     private String email;
     private String companyName;
 
-     public customer(int id, String username, String password, String email, String phone, String companyName) {
+     public Customer(int id, String username, String password, String email, String phone, String companyName) {
         super(id, username, password, "Customer");
         this.companyName= companyName;
         this.email= email;

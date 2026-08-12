@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 public class CustomerService {
-    private ArrayList<customer> customers;
+    private ArrayList<Customer> customers;
     private int nextCustomerId;
     CustomerService(){
         this.customers = new ArrayList<>();
@@ -13,19 +13,19 @@ public class CustomerService {
   
     public void addCustomer( String username, String password,String  email, String phone, String companyName){
           int id = generateNextId();
-        customer newCustomer = new customer(id, username, password, email, phone, companyName);
+        Customer newCustomer = new Customer(id, username, password, email, phone, companyName);
         customers.add(newCustomer);
 
         System.out.println("Customer Added!!");
     }
 
-    public ArrayList<customer> getAllCustomer(){
+    public ArrayList<Customer> getAllCustomer(){
         return this.customers;
         //we will loop through the array in the main class so that it will be easy 
     }
 
-    public customer findCustomerById(int id){
-        for(customer c : customers){
+    public Customer findCustomerById(int id){
+        for(Customer c : customers){
             if(c.getId() == id){
                 return c;
             }
@@ -36,7 +36,7 @@ public class CustomerService {
 
 
    public boolean updateCustomer(int id, String newPhone, String newEmail, String newCompany){
-    customer targetCustomer = findCustomerById(id);
+    Customer targetCustomer = findCustomerById(id);
     if(targetCustomer == null){
         return false;
     }else{
@@ -47,7 +47,7 @@ public class CustomerService {
     return true;
    }
    public boolean deleteCustomer(int id){
-     customer targetCustomer = findCustomerById(id);
+     Customer targetCustomer = findCustomerById(id);
      if(targetCustomer == null){
         return false;
      }
