@@ -26,7 +26,16 @@ public class TicketService {
         return null;
         
     }
-
+    public void getAllTickets(){
+        if(tickets.isEmpty()){
+            System.out.println("No ticket found!!");
+            return;
+        }
+        for(Ticket t : tickets){
+            System.out.println(t);
+        
+    }
+    }
     public ArrayList<Ticket> getTicketsByCustomerId(int customerId){
         ArrayList<Ticket> customerTickets = new ArrayList<>();
         for(Ticket t : tickets){

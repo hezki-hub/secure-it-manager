@@ -15,9 +15,9 @@ public class Main {
         System.out.println("\tSECUREIT MANAGEMENT SYSTEM\t");
          System.out.println("========================================");
         System.out.println("1. Register\n" + "2. Login\n" + "3. Exit");
-        System.out.print("Choose an option: ");
-        int user_input =  input.nextInt();
-        input.nextLine();
+        
+        int user_input =  getValidIntInput(input, "Choose an option: ");
+        
         switch (user_input) {
   // for regestaration 
             case 1:
@@ -74,17 +74,16 @@ System.out.println("4. Logout");
 System.out.print("Choose an option: ");
 
 
-int adminChoice = input.nextInt();
-input.nextLine(); 
+int adminChoice = getValidIntInput(input, "Choose an option: ");
+ 
 switch (adminChoice) {
     case 1:
         System.out.println("\n--- MANAGE CUSTOMERS ---");
         System.out.println("1. Add Customer");
         System.out.println("2. View All Customers");
         System.out.println("3. Delete Customer");
-        System.out.print("Choose an option: ");
-        int customerChoice = input.nextInt();
-        input.nextLine();
+        int customerChoice = getValidIntInput(input, "Choose an option: ");
+        
 
         if (customerChoice == 1) {
             System.out.print("Enter Username: ");
@@ -100,11 +99,11 @@ switch (adminChoice) {
 
             customerService.addCustomer(cUsername, cPassword, cEmail, cPhone, cCompany);
         } else if (customerChoice == 2) {
-            System.out.println(customerService.getAllCustomers());
+           customerService.getAllCustomers();
         } else if (customerChoice == 3) {
-            System.out.print("Enter Customer ID to delete: ");
-            int deleteId = input.nextInt();
-            input.nextLine();
+        
+            int deleteId = getValidIntInput(input, "Enter Customer ID to delete: ");
+            
             
             if (customerService.deleteCustomer(deleteId)) {
                 System.out.println("Customer deleted successfully!");
@@ -119,14 +118,14 @@ switch (adminChoice) {
         System.out.println("1. Add Device");
         System.out.println("2. View Devices by Customer ID");
         System.out.println("3. Update Device Status");
-        System.out.print("Choose an option: ");
-        int deviceChoice = input.nextInt();
-        input.nextLine();
+       
+        int deviceChoice = getValidIntInput(input, "Choose an option: ");
+        
 
         if (deviceChoice == 1) {
-            System.out.print("Enter Customer ID: ");
-            int devCustId = input.nextInt();
-            input.nextLine();
+          
+            int devCustId = getValidIntInput(input, "Enter Customer ID: ");
+            
             System.out.print("Enter Device Type (e.g. Laptop, Server): ");
             String type = input.nextLine();
             System.out.print("Enter Brand: ");
@@ -136,17 +135,17 @@ switch (adminChoice) {
 
             deviceService.addDevice(devCustId, type, brand, serial);
         } else if (deviceChoice == 2) {
-            System.out.print("Enter Customer ID: ");
-            int searchCustId = input.nextInt();
-            input.nextLine();
+            
+            int searchCustId = getValidIntInput(input, "Enter Customer ID:");
+            
             System.out.println(deviceService.getDevicesByCustomerId(searchCustId));
         } else if (deviceChoice == 3) {
-            System.out.print("Enter Device ID: ");
-            int devId = input.nextInt();
-            input.nextLine();
-            System.out.println("Select Status: 1) ACTIVE  2) UNDER_MAINTENANCE  3) DECOMMISSIONED");
-            int statusOpt = input.nextInt();
-            input.nextLine();
+      
+            int devId = getValidIntInput(input, "Enter Device ID: ");
+            
+           
+            int statusOpt = getValidIntInput(input, "Select Status: 1) ACTIVE  2) UNDER_MAINTENANCE  3) DECOMMISSIONED:");
+            
 
             DeviceStatus newStatus = DeviceStatus.ACTIVE;
             if (statusOpt == 2) newStatus = DeviceStatus.UNDER_MAINTENANCE;
@@ -165,33 +164,33 @@ switch (adminChoice) {
         System.out.println("1. Create Ticket");
         System.out.println("2. View Tickets by Customer ID");
         System.out.println("3. Update Ticket Status");
-        System.out.print("Choose an option: ");
-        int ticketChoice = input.nextInt();
-        input.nextLine();
+        
+        int ticketChoice = getValidIntInput(input,"Choose an option");
+        
 
         if (ticketChoice == 1) {
-            System.out.print("Enter Customer ID: ");
-            int tCustId = input.nextInt();
-            input.nextLine();
-            System.out.print("Enter Device ID: ");
-            int tDevId = input.nextInt();
-            input.nextLine();
+            
+            int tCustId = getValidIntInput(input, "Enter Customer ID: ");
+            
+            
+            int tDevId = getValidIntInput(input, "Enter Device ID: ");
+            
             System.out.print("Enter Issue Description: ");
             String desc = input.nextLine();
 
             ticketService.createTicket(tCustId, tDevId, desc);
         } else if (ticketChoice == 2) {
-            System.out.print("Enter Customer ID: ");
-            int searchCustId = input.nextInt();
-            input.nextLine();
+            
+            int searchCustId = getValidIntInput(input, "Enter Customer ID: ");
+            
             System.out.println(ticketService.getTicketsByCustomerId(searchCustId));
         } else if (ticketChoice == 3) {
-            System.out.print("Enter Ticket ID: ");
-            int tId = input.nextInt();
-            input.nextLine();
-            System.out.println("Select Status: 1) OPEN  2) IN_PROGRESS  3) RESOLVED  4) CLOSED");
-            int tStatusOpt = input.nextInt();
-            input.nextLine();
+            
+            int tId = getValidIntInput(input, "Enter Ticket ID");
+           
+            
+            int tStatusOpt = getValidIntInput(input, "Select Status: 1) OPEN  2) IN_PROGRESS  3) RESOLVED  4) CLOSED");
+            
 
             TicketStatus newTStatus = TicketStatus.OPEN;
             if (tStatusOpt == 2) newTStatus = TicketStatus.IN_PROGRESS;
@@ -224,9 +223,9 @@ switch (adminChoice) {
                             System.out.println("2. View My Support Tickets");
                             System.out.println("3. Submit a New Support Ticket");
                             System.out.println("4. Logout");
-                            System.out.print("Choose an option: ");
-                            int custChoice = input.nextInt();
-                            input.nextLine();
+                            
+                            int custChoice = getValidIntInput(input, "Choose an option: ");
+                            
                             switch (custChoice) {
             case 1:
                 System.out.println("\n--- MY DEVICES ---");
@@ -238,9 +237,9 @@ switch (adminChoice) {
                 break;
             case 3:
                 System.out.println("----Submit Support Ticket-----");
-                System.out.print("Enter Device ID: ");
-                int devId = input.nextInt();
-                input.nextLine();
+                
+                int devId = getValidIntInput(input, "Enter Device ID: ");
+                
                 System.out.print("Describe the issue: ");
                 String description = input.nextLine();
 
@@ -259,6 +258,45 @@ switch (adminChoice) {
 
 
 
+                }else if (loggedInUser.getRole().equalsIgnoreCase("Technician")){
+
+                    boolean techRunning = true;
+                    while(techRunning){
+                        System.out.println("\n=== TECHNICIAN DASHBOARD ===");
+        System.out.println("1. View All Tickets");
+        System.out.println("2. Update Ticket Status");
+        System.out.println("3. Logout");
+        int techInput = getValidIntInput(input, "Choose an option");
+
+        switch (techInput) {
+            case 1:
+                System.out.println("\n--- ALL SYSTEM TICKETS ---");
+            ticketService.getAllTickets();
+                break;
+            case 2:
+                System.out.println("\n--- UPDATE TICKET STATUS ---");
+                int tId = getValidIntInput(input, "Enter Ticket ID: ");
+                int statusOpt = getValidIntInput(input, "Select Status: 1) OPEN  2) IN_PROGRESS  3) RESOLVED  4) CLOSED: ");
+            TicketStatus newStatus = TicketStatus.OPEN;
+            if(statusOpt == 2) newStatus = TicketStatus.IN_PROGRESS;
+            if(statusOpt == 3) newStatus = TicketStatus.RESOLVED;
+            if(statusOpt == 4) newStatus = TicketStatus.CLOSED;
+            if (ticketService.updateTicketStatus(tId, newStatus)) {
+                    System.out.println("Ticket status updated successfully!");
+                } else {
+                    System.out.println("Ticket ID not found.");
+                }
+                break;
+            case 3:
+                System.out.println("Logging out!!");
+                techRunning = false;
+                break;
+            default:
+                System.out.println("invalid input!!");
+                break;
+        }
+       
+                    }
                 }else{
                     System.out.println("Invalid username or password. Please try again");
                 }
@@ -274,5 +312,18 @@ switch (adminChoice) {
         }
         }while(is_true);
         input.close();
+  }
+
+
+  // Simple way to catch error (by making a method for it alone!!)
+    public static int getValidIntInput(Scanner scanner, String prompt) {
+    while (true) {
+        System.out.print(prompt);
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input! Please enter a valid number.");
         }
+    }
+}
 }
