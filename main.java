@@ -26,11 +26,11 @@ public class Main {
                 String username = input.nextLine();
                 System.out.print("Enter password: ");
                 String password = input.nextLine();
-                System.out.println("Enter Email: ");
+                System.out.print("Enter Email: ");
                 String email = input.nextLine();
-                System.out.println("Enter Phone Number: ");
+                System.out.print("Enter Phone Number: ");
                 String phone = input.nextLine();
-                System.out.println("Enter Company name: ");
+                System.out.print("Enter Company name: ");
                 String companyName = input.nextLine();
                 System.out.println("Choose your role: ");
                 System.out.println("1)Admin\n2)Technician\n3)Customer");
@@ -71,7 +71,7 @@ System.out.println("1. Manage Customers");
 System.out.println("2. Manage Devices");
 System.out.println("3. Manage Tickets");
 System.out.println("4. Logout");
-System.out.print("Choose an option: ");
+
 
 
 int adminChoice = getValidIntInput(input, "Choose an option: ");
