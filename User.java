@@ -9,6 +9,7 @@ public class User{
         this.username = username;
         this.role = role;
 
+
     }
 // Getter method 
     public int getId(){
@@ -30,5 +31,19 @@ public class User{
     public void setPassword(String password){
         this.password = password;
     }
+    public String toCSV() {
+    return id + "," + username + "," + role + ", " + password;
+}
+ public static User fromCSV(String csvLine){
     
+    String[] data = csvLine.split(",");
+    int id = Integer.parseInt(data[0]);
+    String username  = (data[1]);
+    String password = data[2];
+    String role = data[3];
+    
+    
+    return new User(id, username, password, role);
+ }
+
 }
